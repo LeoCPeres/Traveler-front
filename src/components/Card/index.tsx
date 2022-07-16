@@ -2,7 +2,11 @@ import { Box, Flex, Heading, Image, Link, Text } from "@chakra-ui/react";
 
 export function Card() {
   return (
-    <Link _hover={{ textDecoration: "none" }}>
+    <Link
+      _hover={{ textDecoration: "none" }}
+      href="/cities/aguas-mornas"
+      w="274px"
+    >
       <Flex
         w="274px"
         h="266px"
