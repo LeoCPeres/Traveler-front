@@ -1,5 +1,6 @@
-import { Box, Button, Flex, Heading } from "@chakra-ui/react";
-import { BackButton } from "../../components/BackButton/BackButton";
+import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { BackButton } from "../../components/BackButton";
+import { EditAndDeleteButtons } from "../../components/EditAndDeleteButtons";
 
 export default function City() {
   return (
@@ -15,17 +16,24 @@ export default function City() {
           alignItems="center"
         >
           <BackButton />
-          <Button
-            background="green.500"
-            w="214px"
-            color="#FFF"
-            colorScheme="green"
-            h="48px"
-            _hover={{ opacity: 0.85 }}
-          >
-            + Adicionar Perfil
-          </Button>
+          <Flex gap="24px" align="center">
+            <EditAndDeleteButtons />
+            <Button
+              background="green.500"
+              w="214px"
+              color="#FFF"
+              colorScheme="green"
+              h="48px"
+              _hover={{ opacity: 0.85 }}
+            >
+              + Adicionar Perfil
+            </Button>
+          </Flex>
         </Flex>
+
+        <Box w="100%">
+          <Image src="../images/city.png" objectFit="contain" w="100%" />
+        </Box>
       </Flex>
     </Flex>
   );
