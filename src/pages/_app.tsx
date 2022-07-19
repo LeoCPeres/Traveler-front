@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AuthContextProvider>
       <ChakraProvider theme={theme}>
         <div className={styles.wrapper}>
-          <Sidebar />
           <main>
             <Component {...pageProps} />
           </main>

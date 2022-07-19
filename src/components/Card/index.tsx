@@ -13,10 +13,12 @@ export function Card() {
         bg="#FFF"
         borderRadius="16px"
         direction="column"
+        border="1px"
+        borderColor="gray.200"
       >
         <Box w="100%">
           <Image
-            src="./images/image-card.png"
+            src="../images/image-card.png"
             borderRadius="16px 16px 0px 0px"
             objectFit="cover"
             w="100%"
