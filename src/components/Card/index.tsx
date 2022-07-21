@@ -5,15 +5,16 @@ export function Card() {
     <Link
       _hover={{ textDecoration: "none" }}
       href="/cities/aguas-mornas"
-      w="274px"
+      flex="1"
     >
       <Flex
-        w="274px"
-        h="266px"
+        w="100%"
+        h="100%"
         bg="#FFF"
         borderRadius="16px"
         direction="column"
         border="1px"
+        flex="1"
         borderColor="gray.200"
       >
         <Box w="100%">

@@ -1,8 +1,15 @@
-import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import { BackButton } from "../../components/BackButton";
 import { EditAndDeleteButtons } from "../../components/EditAndDeleteButtons";
-import { FiCamera } from "react-icons/fi";
-import { Card } from "../../components/Card";
+import { FiCamera, FiAlertCircle } from "react-icons/fi";
 import { Sidebar } from "../../components/Sidebar";
 import { LocalCard } from "../../components/LocalCard";
 
@@ -151,6 +158,102 @@ export default function City() {
               <LocalCard />
               <LocalCard />
             </Flex>
+
+            <Flex
+              bg="#FFF"
+              flex="1"
+              w="100%"
+              h="286px"
+              border="1px"
+              borderColor="gray.200"
+              borderRadius="16px"
+              justify="space-between"
+              mb="80px"
+            >
+              <Flex
+                paddingY="53px"
+                paddingX="108px"
+                direction="column"
+                w="100%"
+              >
+                <Flex justify="space-between" align="center">
+                  <Flex
+                    w="119px"
+                    h="32px"
+                    bg="orange.500"
+                    align="center"
+                    justify="center"
+                    borderRadius="100px"
+                    gap="8px"
+                  >
+                    <FiAlertCircle color="#fff" />
+                    <Text color="#FFF" fontWeight="600" fontFamily="Barlow">
+                      Destaque
+                    </Text>
+                  </Flex>
+                  <Flex align="center" gap="24px">
+                    <FiCamera color="#F25D27" size="32" />
+                    <Text fontFamily="Barlow" fontWeight="500" fontSize="24px">
+                      Pontos turísticos
+                    </Text>
+                  </Flex>
+                </Flex>
+                <Heading
+                  color="blue.700"
+                  mt="56px"
+                  fontWeight="600"
+                  lineHeight="36px"
+                >
+                  Praia dos Ingleses
+                </Heading>
+                <Text
+                  mt="24px"
+                  fontFamily="Heebo"
+                  fontWeight="400"
+                  fontSize="18px"
+                >
+                  Uma parte do paraíso na terra. Frequentemente com águas claras
+                  em tons verdes e azuis. Um dos locais mais preferidos por
+                  turistas e viajantes.
+                </Text>
+              </Flex>
+              <Image
+                src="../images/destaque.png"
+                borderRadius="0 16px 16px 0"
+              />
+            </Flex>
+            <Flex w="100%" justify="space-between" align="center" mb="33px">
+              <Heading color="blue.700" fontSize="36px" fontWeight="600">
+                Conheça todos
+              </Heading>
+              <Flex>Componente</Flex>
+            </Flex>
+
+            <SimpleGrid
+              gap="40px"
+              columns={4}
+              w="100%"
+              background="gray.100"
+              mt="29px"
+              minChildWidth="274px"
+              mb="80px"
+            >
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+              <LocalCard />
+            </SimpleGrid>
           </Flex>
         </Flex>
       </Flex>

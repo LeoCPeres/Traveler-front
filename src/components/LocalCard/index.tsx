@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { FiStar, FiCoffee } from "react-icons/fi";
+import { EditAndDeleteButtons } from "../EditAndDeleteButtons";
 
 export function LocalCard() {
   return (
@@ -32,6 +33,7 @@ export function LocalCard() {
             4,7
           </Heading>
         </Flex>
+
         <Image
           src="../images/image-card.png"
           borderRadius="16px 16px 0px 0px"
