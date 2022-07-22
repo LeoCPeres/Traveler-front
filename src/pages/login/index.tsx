@@ -12,7 +12,6 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function Login() {

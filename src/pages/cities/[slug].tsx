@@ -10,19 +10,23 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  TabsProvider,
   Text,
 } from "@chakra-ui/react";
 import { BackButton } from "../../components/BackButton";
 import { EditAndDeleteButtons } from "../../components/EditAndDeleteButtons";
 import { FiCamera, FiAlertCircle } from "react-icons/fi";
-import { Sidebar } from "../../components/Sidebar";
 import { LocalCard } from "../../components/LocalCard";
+import { useRouter } from "next/router";
 
 export default function City() {
+  const router = useRouter();
+
+  function handleNewProfile() {
+    router.push("/cities/new");
+  }
+
   return (
     <>
-      <Sidebar />
       <Flex h="100vh" direction="row" background="gray.100" marginLeft="96px">
         <Flex width="100%" height="100%" direction="column">
           <Flex
@@ -44,6 +48,7 @@ export default function City() {
                 colorScheme="green"
                 h="48px"
                 _hover={{ opacity: 0.85 }}
+                onClick={handleNewProfile}
               >
                 + Adicionar Perfil
               </Button>

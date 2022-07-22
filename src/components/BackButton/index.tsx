@@ -10,20 +10,16 @@ export function BackButton() {
   }
 
   return (
-    <Link
+    <Button
       onClick={handleBackClick}
-      background="transparent"
-      borderColor="#DCE2E6"
+      borderColor="gray.200"
       border="1px"
-      borderStyle="solid"
+      opacity="0.6"
       borderRadius="10px"
-      w="40px"
-      h="40px"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
+      width="48px"
+      height="48px"
     >
       <FiArrowLeft />
-    </Link>
+    </Button>
   );
 }

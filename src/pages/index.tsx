@@ -8,7 +8,6 @@ export default function Home() {
 
   return (
     <>
-      <Sidebar />
       <Flex h="100vh" direction="row" background="gray.100" marginLeft="96px">
         <Flex width="100%" height="100%" direction="column">
           <Flex
