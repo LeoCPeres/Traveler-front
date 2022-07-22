@@ -5,6 +5,12 @@ import {
   Heading,
   Image,
   SimpleGrid,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  TabsProvider,
   Text,
 } from "@chakra-ui/react";
 import { BackButton } from "../../components/BackButton";
@@ -222,38 +228,75 @@ export default function City() {
                 borderRadius="0 16px 16px 0"
               />
             </Flex>
-            <Flex w="100%" justify="space-between" align="center" mb="33px">
-              <Heading color="blue.700" fontSize="36px" fontWeight="600">
-                Conheça todos
-              </Heading>
-              <Flex>Componente</Flex>
-            </Flex>
 
-            <SimpleGrid
-              gap="40px"
-              columns={4}
-              w="100%"
-              background="gray.100"
-              mt="29px"
-              minChildWidth="274px"
-              mb="80px"
-            >
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-              <LocalCard />
-            </SimpleGrid>
+            <Flex w="100%">
+              <Tabs
+                w="100%"
+                display="flex"
+                justifyContent="space-between"
+                align="center"
+                mb="33px"
+                flexDirection="column"
+              >
+                <Flex
+                  w="100%"
+                  alignItems="center"
+                  justifyContent="space-between"
+                >
+                  <Heading color="blue.700" fontSize="36px" fontWeight="600">
+                    Conheça todos
+                  </Heading>
+                  <TabList>
+                    <Tab
+                      _selected={{ borderColor: "orange.500", fontWeight: 600 }}
+                    >
+                      Todos
+                    </Tab>
+                    <Tab
+                      _selected={{ borderColor: "orange.500", fontWeight: 600 }}
+                    >
+                      Pontos Turísticos
+                    </Tab>
+                    <Tab _selected={{ borderColor: "orange.500" }}>
+                      Comida & Bebida
+                    </Tab>
+                    <Tab _selected={{ borderColor: "orange.500" }}>
+                      Eventos Organizados
+                    </Tab>
+                  </TabList>
+                </Flex>
+
+                <TabPanels w="100%">
+                  <TabPanel w="100%">
+                    <SimpleGrid
+                      gap="40px"
+                      columns={4}
+                      w="100%"
+                      background="gray.100"
+                      mt="29px"
+                      minChildWidth="274px"
+                      mb="80px"
+                    >
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                      <LocalCard />
+                    </SimpleGrid>
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
