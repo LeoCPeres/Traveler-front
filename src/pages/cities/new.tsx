@@ -1,5 +1,6 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, FormLabel, Heading, Input, Text } from "@chakra-ui/react";
 import { BackButton } from "../../components/BackButton";
+import { CustomForm } from "../../components/Form";
 
 export default function New() {
   return (
@@ -28,6 +29,25 @@ export default function New() {
           <span>-</span>
           <Text>02</Text>
         </Flex>
+      </Flex>
+
+      <Flex w="100%" align="center" justify="center" mt="48px">
+        <CustomForm
+          title="Adicione uma cidade"
+          buttonText="Concluir cadastro"
+          stage="01"
+          subtitle="Dados da cidade"
+        >
+          <FormLabel fontSize="14px" fontWeight="400" fontFamily="Heebo">
+            Nome da cidade
+          </FormLabel>
+          <Input
+            h="56px"
+            bg="#F5F8FA"
+            border="1px solid #DCE2E6"
+            focusBorderColor="orange.500"
+          />
+        </CustomForm>
       </Flex>
     </Flex>
   );
