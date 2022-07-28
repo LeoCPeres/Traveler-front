@@ -57,6 +57,7 @@ export function ImageUpload(props: FileUploadProps) {
       <input
         type="file"
         hidden
+        accept={accept}
         {...rest}
         ref={(e) => {
           ref(e);

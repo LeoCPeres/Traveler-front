@@ -1,22 +1,27 @@
 import { Flex, Text, Heading, Button, Divider } from "@chakra-ui/react";
 import styles from "./styles.module.scss";
 import { FiAlertCircle } from "react-icons/fi";
+import { useFormContext } from "../../contexts/FormContext";
 
 interface CustomFormProps {
   children: React.ReactNode;
-  stage?: string;
+  stage?: number;
   title: string;
   buttonText?: string;
   subtitle: string;
+  maxStages?: number;
 }
 
 export function CustomForm({
   children,
-  stage,
+  stage = 0,
   title,
   buttonText,
   subtitle,
+  maxStages = 2,
 }: CustomFormProps) {
+  const { handleNextStage } = useFormContext();
+
   return (
     <Flex
       w="60%"
@@ -33,12 +38,12 @@ export function CustomForm({
         borderBottom="1px solid #DCE2E6"
         w="100%"
         h="143px"
-        className={stage != null ? styles.bgGreen : styles.bgOrange}
+        className={stage != 0 ? styles.bgGreen : styles.bgOrange}
         gap="40px"
         align="center"
         borderRadius="16px 16px 0 0"
       >
-        {stage != null && (
+        {stage != 0 && (
           <Flex
             bg="green.500"
             w="64px"
@@ -88,8 +93,13 @@ export function CustomForm({
           <Text maxWidth="164px">Preencha todos os dados com cuidado.</Text>
         </Flex>
 
-        {stage != null ? (
-          <Button bg="blue.500" color="#FFF" _hover={{ opacity: 0.85 }}>
+        {stage != 0 && stage < maxStages ? (
+          <Button
+            bg="blue.500"
+            color="#FFF"
+            _hover={{ opacity: 0.85 }}
+            onClick={() => handleNextStage(maxStages)}
+          >
             Próximo
           </Button>
         ) : (

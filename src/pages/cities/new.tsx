@@ -3,6 +3,7 @@ import { BackButton } from "../../components/BackButton";
 import { CustomForm } from "../../components/Form";
 import { ImageUpload } from "../../components/ImageUpload";
 import { useForm } from "react-hook-form";
+import { useFormContext } from "../../contexts/FormContext";
 
 type FormValues = {
   file_: FileList;
@@ -28,6 +29,10 @@ export default function New() {
     }
     return true;
   };
+
+  const { stage } = useFormContext();
+
+  const formatedStage = "0" + stage;
 
   return (
     <Flex h="100vh" direction="column" background="gray.100" marginLeft="96px">
@@ -61,7 +66,7 @@ export default function New() {
         <CustomForm
           title="Adicione uma cidade"
           buttonText="Concluir cadastro"
-          stage="01"
+          stage={stage}
           subtitle="Dados da cidade"
         >
           <FormLabel fontSize="14px" fontWeight="400" fontFamily="Heebo">

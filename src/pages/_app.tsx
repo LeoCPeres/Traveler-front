@@ -5,20 +5,23 @@ import { AuthContextProvider, useAuth } from "../contexts/AuthContext";
 import { Sidebar } from "../components/Sidebar";
 
 import styles from "../styles/app.module.scss";
+import { FormContextProvider } from "../contexts/FormContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { email } = useAuth();
 
   return (
     <AuthContextProvider>
-      <ChakraProvider theme={theme}>
-        <div className={styles.wrapper}>
-          <Sidebar />
-          <main>
-            <Component {...pageProps} />
-          </main>
-        </div>
-      </ChakraProvider>
+      <FormContextProvider>
+        <ChakraProvider theme={theme}>
+          <div className={styles.wrapper}>
+            <Sidebar />
+            <main>
+              <Component {...pageProps} />
+            </main>
+          </div>
+        </ChakraProvider>
+      </FormContextProvider>
     </AuthContextProvider>
   );
 }
