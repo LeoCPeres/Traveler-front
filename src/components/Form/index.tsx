@@ -1,6 +1,6 @@
-import { Flex, Text, Heading, Button, Divider } from "@chakra-ui/react";
+import { Flex, Text, Heading, Button, Divider, Box } from "@chakra-ui/react";
 import styles from "./styles.module.scss";
-import { FiAlertCircle } from "react-icons/fi";
+import { FiAlertCircle, FiArrowLeft } from "react-icons/fi";
 import { useFormContext } from "../../contexts/FormContext";
 
 interface CustomFormProps {
@@ -20,7 +20,7 @@ export function CustomForm({
   subtitle,
   maxStages = 2,
 }: CustomFormProps) {
-  const { handleNextStage } = useFormContext();
+  const { handleNextStage, handlePreviousStage } = useFormContext();
 
   return (
     <Flex
@@ -29,7 +29,7 @@ export function CustomForm({
       border="1px solid #DCE2E6"
       direction="column"
       h="100%"
-      as="form"
+      // as="form"
       bg="#FFF"
     >
       <Flex
@@ -93,25 +93,32 @@ export function CustomForm({
           <Text maxWidth="164px">Preencha todos os dados com cuidado.</Text>
         </Flex>
 
-        {stage != 0 && stage < maxStages ? (
-          <Button
-            bg="blue.500"
-            color="#FFF"
-            _hover={{ opacity: 0.85 }}
-            onClick={() => handleNextStage(maxStages)}
-          >
-            Próximo
-          </Button>
-        ) : (
-          <Button
-            bg="green.500"
-            color="#FFF"
-            _hover={{ opacity: 0.85 }}
-            type="submit"
-          >
-            {buttonText}
-          </Button>
-        )}
+        <Flex gap="2rem" align="center">
+          {stage != 1 && (
+            <FiArrowLeft cursor="pointer" onClick={handlePreviousStage} />
+          )}
+
+          {stage != null && stage < maxStages ? (
+            <Button
+              bg="blue.500"
+              color="#FFF"
+              _hover={{ opacity: 0.85 }}
+              onClick={() => handleNextStage(maxStages)}
+              type="button"
+            >
+              Próximo
+            </Button>
+          ) : (
+            <Button
+              bg="green.500"
+              color="#FFF"
+              _hover={{ opacity: 0.85 }}
+              type="submit"
+            >
+              {buttonText}
+            </Button>
+          )}
+        </Flex>
       </Flex>
     </Flex>
   );

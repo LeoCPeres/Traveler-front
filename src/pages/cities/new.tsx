@@ -1,9 +1,18 @@
-import { Flex, FormLabel, Heading, Input, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  FormLabel,
+  Heading,
+  Input,
+  SimpleGrid,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import { BackButton } from "../../components/BackButton";
 import { CustomForm } from "../../components/Form";
 import { ImageUpload } from "../../components/ImageUpload";
 import { useForm } from "react-hook-form";
 import { useFormContext } from "../../contexts/FormContext";
+import { CategoryCard } from "../../components/CategoryCard";
 
 type FormValues = {
   file_: FileList;
@@ -32,6 +41,8 @@ export default function New() {
 
   const { stage } = useFormContext();
 
+  const maxStages = ["01", "02"];
+
   const formatedStage = "0" + stage;
 
   return (
@@ -56,40 +67,136 @@ export default function New() {
         </Text>
 
         <Flex align="center" gap="8px">
-          <Text fontWeight="500">01</Text>
-          <span>-</span>
-          <Text>02</Text>
+          {maxStages.map((x) => {
+            if (
+              Number(x) - 1 == 0 ||
+              Number(x) < Number(maxStages[maxStages.length - 1])
+            ) {
+              return (
+                <>
+                  <Text
+                    fontWeight={Number(formatedStage) == Number(x) ? "500" : ""}
+                  >
+                    {x}
+                  </Text>
+                  <span>-</span>
+                </>
+              );
+            } else {
+              return (
+                <Text
+                  fontWeight={Number(formatedStage) == Number(x) ? "500" : ""}
+                >
+                  {x}
+                </Text>
+              );
+            }
+          })}
         </Flex>
       </Flex>
 
-      <Flex w="100%" align="center" justify="center" mt="48px">
+      <Flex w="100%" align="center" justify="center" py="48px">
         <CustomForm
-          title="Adicione uma cidade"
+          title={stage == 1 ? "Adicione uma cidade" : "Adicione um local"}
           buttonText="Concluir cadastro"
           stage={stage}
-          subtitle="Dados da cidade"
+          subtitle={stage == 1 ? "Dados da cidade" : "Dados Básicos"}
+          maxStages={2}
         >
-          <FormLabel fontSize="14px" fontWeight="400" fontFamily="Heebo">
-            Nome da cidade
-          </FormLabel>
-          <Input
-            h="56px"
-            bg="#F5F8FA"
-            border="1px solid #DCE2E6"
-            focusBorderColor="orange.500"
-          />
-          <FormLabel
-            fontSize="14px"
-            fontWeight="400"
-            fontFamily="Heebo"
-            mt="24px"
-          >
-            Foto da cidade
-          </FormLabel>
-          <ImageUpload
-            accept={"image/*"}
-            register={register("file_", { validate: validateFiles })}
-          />
+          {stage == 1 ? (
+            <>
+              <FormLabel fontSize="18px" fontWeight="400" fontFamily="Heebo">
+                Nome da cidade
+              </FormLabel>
+              <Input
+                h="56px"
+                bg="#F5F8FA"
+                border="1px solid #DCE2E6"
+                focusBorderColor="orange.500"
+              />
+              <FormLabel
+                fontSize="18px"
+                fontWeight="400"
+                fontFamily="Heebo"
+                mt="24px"
+              >
+                Foto da cidade
+              </FormLabel>
+              <ImageUpload
+                accept={"image/*"}
+                register={register("file_", { validate: validateFiles })}
+              />
+              <FormLabel
+                fontSize="18px"
+                fontWeight="400"
+                fontFamily="Heebo"
+                mt="24px"
+              >
+                Descrição da cidade
+              </FormLabel>
+              <Textarea
+                bg="#F5F8FA"
+                border="1px solid #DCE2E6"
+                focusBorderColor="orange.500"
+                maxLength={320}
+                placeholder="Máximo de 320 caracteres"
+                h="202px"
+              ></Textarea>
+            </>
+          ) : (
+            <>
+              <FormLabel fontSize="18px" fontWeight="400" fontFamily="Heebo">
+                Nome do local
+              </FormLabel>
+              <Input
+                h="56px"
+                bg="#F5F8FA"
+                border="1px solid #DCE2E6"
+                focusBorderColor="orange.500"
+              />
+              <FormLabel
+                fontSize="18px"
+                fontWeight="400"
+                fontFamily="Heebo"
+                mt="24px"
+              >
+                Foto do local
+              </FormLabel>
+              <ImageUpload
+                accept={"image/*"}
+                register={register("file_", { validate: validateFiles })}
+              />
+              <FormLabel
+                fontSize="18px"
+                fontWeight="400"
+                fontFamily="Heebo"
+                mt="24px"
+              >
+                Descrição do local
+              </FormLabel>
+              <Textarea
+                bg="#F5F8FA"
+                border="1px solid #DCE2E6"
+                focusBorderColor="orange.500"
+                maxLength={320}
+                placeholder="Máximo de 320 caracteres"
+                h="202px"
+              />
+              <FormLabel
+                fontSize="18px"
+                fontWeight="400"
+                fontFamily="Heebo"
+                mt="24px"
+              >
+                Selecione uma categoria
+              </FormLabel>
+              <SimpleGrid columns={3} gap="16px" mt="18px">
+                <CategoryCard />
+                <CategoryCard />
+                <CategoryCard />
+              </SimpleGrid>
+            </>
+          )}
         </CustomForm>
       </Flex>
     </Flex>

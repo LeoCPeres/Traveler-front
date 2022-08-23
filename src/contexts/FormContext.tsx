@@ -17,8 +17,9 @@ export function FormContextProvider({ children }: FormContextProviderProps) {
   const [stage, setStage] = useState(1);
 
   function handleNextStage(maxStages: number) {
-    if (stage < maxStages) {
+    if (stage <= maxStages) {
       setStage(stage + 1);
+      window.scrollTo(0, 0);
     }
   }
 
